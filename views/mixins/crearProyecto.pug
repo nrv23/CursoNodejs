@@ -1,0 +1,8 @@
+mixin crearProyecto(proyecto = {})
+	form.agregar-proyecto(action=`/nuevo-Proyecto/${proyecto.id || ''}` method='POST')
+		.campo
+			label(for="nombre") Nombre Proyecto
+			input(type="text" id="nombre" name="nombre" value=proyecto.nombre placeholder="Nombre del Proyecto")
+		.campo.enviar
+			input(type="submit" value=`${proyecto.nombre ? 'Guardar': 'Agregar'}` class="boton")
+			//el mixin va funcionar para poder usar esta parte de codigo para el formulario de guardar y editar proyectos 

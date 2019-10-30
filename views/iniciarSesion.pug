@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+html(lang="en")
+	head
+		include partials/header
+	//errores es la variable de errores que se renderiza desde el controller
+	// email y password son variables renderizadas del servidor a esta vista
+	body.login
+		.contenedor-formulario
+			h1 Incia Sesión en Uptask 
+			if locals.mensajes
+				.alerta
+					each categoria in Object.keys(locals.mensajes)
+						each  error in mensajes[categoria]
+							.alerta(class=`${categoria}`)
+								p= error
+			form#formulario.caja.caja-login(method="POST" action="/login")
+				.campo
+					label(for="email") E-mail:
+					input(type="text" name="email" value=email placeholder="Tu email")
+				.campo
+					label(for="password") Password:
+					input(type="password" name="password" value=password placeholder="Tu password")
+				.campo.enviar
+					input.boton(type="submit" value="Login")
+				.campo.acciones
+					a(href="/cuenta/crear") Registrarse gratis
+					a(href="/reestablecer-password") ¿Olviaste tu contraseña?
+		script(src="/dist/bundle.js")

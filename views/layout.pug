@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+html(lang="en")
+	head
+		include partials/header 
+	body
+		header.barra
+			h1 Uptask - Administrador de Proyectos
+			a(href="/cerrar-sesion") Cerrar Sesión
+
+		main.contenedor
+			aside.contenedor-proyectos
+				.panel.crear-proyecto
+					a(href="/nuevo-proyecto" class="boton") Nuevo Proyecto
+						span +
+				.panel.lista-proyectos
+					h2 Proyectos
+					ul#proyectos.proyectos
+						if(proyectos.length)
+							each proyecto in proyectos
+								li
+									a(href=`/proyectos/${proyecto.url}`)= proyecto.nombre
+									//generar urls mas amigables para el SEO
+
+			block contenido
+	script(src="/dist/bundle.js")
+	//las carpetas css y js estan dentro de una carpeta public por eso en los links de referencia se antepone una /
+	//	pre= vardump(proyectos)
+
+	//script(src="/dist/bundle.js") ese archivo bundle es el archivo javascript compilado
+	//con todo el codigo generado, al importarlo en la vista de pug puedo acceder a las funciones 
+	// para manejar eventos 
