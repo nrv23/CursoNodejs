@@ -48,7 +48,7 @@ exports.crearCuenta =  async (req, res, next) => {
 		res.redirect('/iniciar-sesion');
 	
 	}catch(err){
-
+		console.log(err);
 		// crear el flash message
 		req.flash('error', err.errors.map(error => error.message)); // crear un nuevo elemento con solamente
 		//el mensaje del error, al final da como resultado un array de mensajes de error
