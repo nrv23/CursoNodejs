@@ -48,17 +48,18 @@ exports.crearCuenta =  async (req, res, next) => {
 		res.redirect('/iniciar-sesion');
 	
 	}catch(err){
-		console.log(err);
-		// crear el flash message
-		req.flash('error', err.errors.map(error => error.message)); // crear un nuevo elemento con solamente
-		//el mensaje del error, al final da como resultado un array de mensajes de error
-		//enviar los errores a la vista de crear cuenta
-		res.render('crearCuenta',{
-			nombrePagina: 'Nueva Cuenta en Uptask',
-			mensajes: req.flash(), // errors es el array que trae los errores
-			email, 
-			password
-		});	
+		if(typeof err !== 'undefined'){
+				// crear el flash message
+			req.flash('error', err.errors.map(error => error.message)); // crear un nuevo elemento con solamente
+			//el mensaje del error, al final da como resultado un array de mensajes de error
+			//enviar los errores a la vista de crear cuenta
+			res.render('crearCuenta',{
+				nombrePagina: 'Nueva Cuenta en Uptask',
+				mensajes: req.flash(), // errors es el array que trae los errores
+				email, 
+				password
+			});
+		}	
 	}
 	
 }
