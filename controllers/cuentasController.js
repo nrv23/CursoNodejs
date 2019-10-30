@@ -48,7 +48,7 @@ exports.crearCuenta =  async (req, res, next) => {
 		res.redirect('/iniciar-sesion');
 	
 	}catch(err){
-		if(typeof err !== 'undefined'){
+	
 				// crear el flash message
 			req.flash('error', err.errors.map(error => error.message)); // crear un nuevo elemento con solamente
 			//el mensaje del error, al final da como resultado un array de mensajes de error
@@ -59,7 +59,7 @@ exports.crearCuenta =  async (req, res, next) => {
 				email, 
 				password
 			});
-		}	
+		
 	}
 	
 }
@@ -93,3 +93,10 @@ exports.confirmarCuenta= async (req, res) => {
 			} //
 	}
 }
+
+
+//comandos importantes para manejo de heroku
+
+//heroku create --remote production // crear un app en heroku
+// git push production master // clonar la rama de git a la aplicacion de heroku
+// herkou logs --tail// ver los logs de heroku
