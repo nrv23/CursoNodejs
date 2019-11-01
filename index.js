@@ -18,6 +18,7 @@ const host = process.env.HOST || '0.0.0.0';
 require('./models/Proyectos');
 require('./models/Tareas');
 require('./models/Usuarios');
+console.log(expressValidator);
 //conectar a la base de datos 
 /*db.authenticate() // -> se conecta la bd
 	.then(() => { // si se conecta a la bd
@@ -38,7 +39,8 @@ app.set('view engine','pug');
 //view engine son palabras reservadas de express para poder habilitar un motor de plantillas. Pug en este caso
 
 
-// habilitar body-parser
+// habilitar body-parser para leer datos del formulario
+app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended:true}));
 //habilitar express validator
 
