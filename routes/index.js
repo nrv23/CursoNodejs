@@ -69,5 +69,3 @@ module.exports =  () => {
 
 
 // martes 6:45 pm ir a la parada de sabanilla
-
-//Nvmr231191 contraseña de la aplicacion del banco
